@@ -1,5 +1,9 @@
 # finance-mauritius
 
+```
+pip install finance-mauritius
+```
+
 Export your data in Excel format
 
 ```python
