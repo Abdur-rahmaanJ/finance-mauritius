@@ -1,6 +1,6 @@
 [project]
 name = "finance-mauritius"
-version = "0.1.0"
+version = "0.1.1"
 description = "Useful functions for Mauritius banks and financials institutions like MRA (Mauritius Revenue Authority)"
 authors = [
     { name = "Abdur-RahmaanJ", email = "arj.python@gmail.com" }
