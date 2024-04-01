@@ -70,6 +70,16 @@ class MCB:
     def csv_money_in(cls):
         if cls.csv_df is None:
             raise Exception('Please use MCB.process_csv first')
+        groupby = cls.csv_df.group_by("Description").agg(pl.col("Money in").sum())
+        rows = dict(groupby.iter_rows())
+        filtered_above_0 = dict(filter(lambda e:e[1]>0.0, rows.items() ) )
+
+        return filtered_above_0
+    
+    @classmethod
+    def csv_money_out(cls):
+        if cls.csv_df is None:
+            raise Exception('Please use MCB.process_csv first')
         groupby = cls.csv_df.group_by("Description").agg(pl.col("Money out").sum())
         rows = dict(groupby.iter_rows())
         filtered_above_0 = dict(filter(lambda e:e[1]>0.0, rows.items() ) )
