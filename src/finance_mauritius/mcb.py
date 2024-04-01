@@ -6,7 +6,7 @@ class MCB:
     csv_info = None
 
     @classmethod
-    def process_csv(path):
+    def process_csv(cls, path):
 
         info = {
 
@@ -58,9 +58,23 @@ class MCB:
         # x = df.group_by("Description").agg(pl.col("Money in").sum())
         # print(dict(x.iter_rows()))
 
+        cls.csv_df = df 
+        cls.csv_info = info
+
         return {
             'df': df,
             'info': info
         }
+    
+    @classmethod
+    def csv_money_in(cls):
+        if cls.csv_df is None:
+            raise Exception('Please use MCB.process_csv first')
+        groupby = cls.csv_df.group_by("Description").agg(pl.col("Money out").sum())
+        rows = dict(groupby.iter_rows())
+        filtered_above_0 = dict(filter(lambda e:e[1]>0.0, rows.items() ) )
+
+        return filtered_above_0
+
 
 
