@@ -1,15 +1,16 @@
 [project]
 name = "finance-mauritius"
 version = "0.1.0"
-description = "Add your description here"
+description = "Useful functions for Mauritius banks and financials institutions like MRA (Mauritius Revenue Authority)"
 authors = [
-    { name = "Abdur-RahmaanJ", email = "cryptolabour@gmail.com" }
+    { name = "Abdur-RahmaanJ", email = "arj.python@gmail.com" }
 ]
 dependencies = [
     "polars>=0.20.17",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"
+keywords = ["egg", "bacon", "sausage", "tomatoes", "Lobster Thermidor"]
 
 [build-system]
 requires = ["hatchling"]
@@ -24,3 +25,10 @@ allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/finance_mauritius"]
+
+[project.urls]
+Homepage = "https://github.com/abdur-rahmaanJ/finance-mauritius"
+Documentation = "https://github.com/abdur-rahmaanJ/finance-mauritius"
+Repository = "https://github.com/abdur-rahmaanJ/finance-mauritius.git"
+"Bug Tracker" = "https://github.com/abdur-rahmaanJ/finance-mauritius/issues"
+Changelog = "https://github.com/abdur-rahmaanJ/finance-mauritius/blob/stable/README.md"
