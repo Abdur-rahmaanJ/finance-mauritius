@@ -48,8 +48,8 @@ class MCB:
         df = df.with_columns(pl.col('Transaction Date').str.strptime(pl.Date,'%d-%b-%Y'))
         df = df.with_columns(pl.col("Money out").str.replace(r",", ""))
         df = df.with_columns(pl.col("Money in").str.replace(r",", ""))
-        df = df.with_columns(pl.col('Money out').cast(pl.Float32, strict=False))
-        df = df.with_columns(pl.col('Money in').cast(pl.Float32, strict=False))
+        df = df.with_columns(pl.col('Money out').cast(pl.Decimal(scale=2, precision=None), strict=False))
+        df = df.with_columns(pl.col('Money in').cast(pl.Decimal(scale=2, precision=None), strict=False))
 
         info['money_in'] = df['Money in'].sum()
         info['money_out'] = df['Money out'].sum()
