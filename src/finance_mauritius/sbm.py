@@ -54,7 +54,23 @@ class SBM:
         df = df.with_columns(pl.col('Transaction Date').str.strptime(pl.Date,'%m,%d,%Y'))
         df = df.with_columns(pl.col('Value Date').str.strptime(pl.Date,'%m,%d,%Y'))
 
+        info['money_in'] = float(df["Credit Amount"].sum())
+
+        cls.csv_df = df 
+        cls.csv_info = info
+
         return {
             'info': info,
             'df': df
         }
+    
+
+    @classmethod
+    def csv_money_in(cls):
+        if cls.csv_df is None:
+            raise Exception('Please use SBM.process_csv first')
+        groupby = cls.csv_df.group_by("Remarks").agg(pl.col("Credit Amount").sum())
+        rows = dict(groupby.iter_rows())
+        filtered_above_0 = dict(filter(lambda e:e[1]>0.0, rows.items() ) )
+
+        return filtered_above_0
