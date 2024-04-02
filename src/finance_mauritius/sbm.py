@@ -54,7 +54,7 @@ class SBM:
         df = df.with_columns(pl.col('Transaction Date').str.strptime(pl.Date,'%m,%d,%Y'))
         df = df.with_columns(pl.col('Value Date').str.strptime(pl.Date,'%m,%d,%Y'))
 
-        info['money_in'] = float(df["Credit Amount"].sum())
+        info['money_in'] = df["Credit Amount"].sum()
 
         cls.csv_df = df 
         cls.csv_info = info
