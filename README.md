@@ -7,11 +7,10 @@ pip install finance-mauritius
 Export your data in Excel format
 
 ```python
-from finance_mauritius.mcb import MCB
-
+>>> from finance_mauritius.mcb import MCB
 >>> MCB.process_csv('mcb.CSV')
 {
-    'df': <polars_df>, 
+    'df': <polars df>, 
     'info': {
         'account_number': '00000000001', 
         'account_currency': 'MUR', 
@@ -30,6 +29,30 @@ from finance_mauritius.mcb import MCB
     'JUICE Transfer <redacted>': 1000.0, 
     'JUICE Transfer <redacted>': 2000.0, 
     'JUICE Transfer <redacted>': 2000.0
+}
+>>> from finance_mauritius.mcb import SBM
+>>> SBM.process_csv('SBM.csv')
+{
+    'info': {
+        'account_number': '00000000000001', 
+        'date_from': '03032024', 
+        'date_to': '04012024', 
+        'transactions_for': '-', 
+        'last_n_transactions': '-', 
+        'money_in': 20000.0,
+        'money_out': 10000.0,
+        }, 
+    'df': <polars df>
+}
+>>> SBM.csv_money_in()
+{   
+    'SOM3R3F:<redacted>': Decimal('10000.00'), 
+    'MCBLMUMU/<redacted>': Decimal('10000.00')
+}
+>>> SBM.csv_money_out()
+{
+    '<redacted> NON SBM POS': Decimal('1000.00'), 
+    'ATM Withdrawal - <redacted>': Decimal('9000.00')
 }
 ```
 
