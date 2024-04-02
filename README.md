@@ -34,7 +34,7 @@ Export your data in Excel format
     'JUICE Transfer <redacted>': Decimal(2000.00), 
     'JUICE Transfer <redacted>': Decimal(2000.00)
 }
->>> from finance_mauritius.mcb import SBM
+>>> from finance_mauritius.sbm import SBM
 >>> SBM.process_csv('SBM.csv')
 {
     'info': {
