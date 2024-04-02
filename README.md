@@ -1,5 +1,7 @@
 # finance-mauritius
 
+Useful functions for Mauritius banks and financials institutions like MRA (Mauritius Revenue Authority)
+
 ```
 pip install finance-mauritius
 ```
